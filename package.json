@@ -1,0 +1,28 @@
+{
+  "name": "vue-tooltip-directive",
+  "version": "1.0.0",
+  "description": "A Vue 2 plugin that provides a custom directive allowing the usage of any tooltip component as a directive. ",
+  "main": "index.js",
+  "author": "Luke Roberts <luke@mewt.eu>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mewtlu/vue-tooltip-directive.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "compile": "npm run build && cp package* dist",
+    "publish": "npm run compile && cd dist && npm publish"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "vue": "^2.6.14",
+    "@types/uuid": "^8.3.2"
+  }
+}
