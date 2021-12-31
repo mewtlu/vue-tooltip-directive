@@ -1,4 +1,6 @@
 # vue-tooltip-directive
+![https://img.shields.io/npm/v/vue-tooltip-directive](https://img.shields.io/npm/v/vue-tooltip-directive)
+
 A Vue 2 plugin that provides a custom directive allowing the usage of any tooltip component as a directive.
 
 Currently built for Vuetify and depends on usage of their components' `activator` functionality, however I'm sure this could be adapted to handle others.
