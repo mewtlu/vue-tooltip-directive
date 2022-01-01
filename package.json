@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "compile": "npm run build && cp package* dist",
+    "compile": "npm run build && cp *.md dist && cp package*.json dist",
     "publish": "npm run compile && cd dist && npm publish"
   },
   "dependencies": {
