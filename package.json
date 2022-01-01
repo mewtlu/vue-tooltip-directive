@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc",
     "compile": "npm run build && cp *.md dist && cp package*.json dist",
-    "publish": "npm run compile && cd dist && npm publish"
+    "prepare": "npm run compile && cd dist"
   },
   "dependencies": {
     "uuid": "^8.3.2"
