@@ -1,5 +1,5 @@
 # vue-tooltip-directive
-![https://img.shields.io/npm/v/vue-tooltip-directive](https://img.shields.io/npm/v/vue-tooltip-directive)
+[![https://img.shields.io/npm/v/vue-tooltip-directive](https://img.shields.io/npm/v/vue-tooltip-directive)](https://www.npmjs.com/package/vue-tooltip-directive)
 
 A Vue 2 plugin that provides a custom directive allowing the usage of any tooltip component as a directive.
 
