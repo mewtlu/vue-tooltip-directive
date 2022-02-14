@@ -11,8 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "compile": "npm run build && cp *.md dist && cp package*.json dist",
-    "prepare": "npm run compile && cd dist"
+    "compile": "npm run build && cp *.md dist && cp package*.json dist"
   },
   "dependencies": {
     "uuid": "^8.3.2"
