@@ -9,48 +9,27 @@ Currently built for Vuetify and depends on usage of their components' `activator
 
 1. Install the npm dependency:  
 ```npm install --save vue-tooltip-directive```
-2. Create new or adapt a current component to handle displaying the tooltip, Vuetify example:
-```vue
-<template>
-  <v-tooltip
-    :top="position === 'top'"
-    :right="position === 'right'"
-    :bottom="position === 'bottom'"
-    :left="position === 'left'"
-    :activator="activator"
-  >
-    <span>{{ content }}</span>
-  </v-tooltip>
-</template>
 
-<script>
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'MyCustomTooltip',
-  props: {
-    activator: { required: true },
-    content: { type: String, required: false },
-    position: { type: String, required: false }
-  }
-})
-</script>
-```
-3. Include the plugin into your Vue app by adding a `Vue.use(..)` in the root file of your Vue project (usually `main.js/main.ts`), making sure to pass your custom tooltip component as the component key in the config object:
+2. Include the plugin into your Vue app by adding a `Vue.use(..)` in the root file of your Vue project (usually `main.js/main.ts`):
 ```typescript
 import Vue from 'vue'
 import VueTooltipDirective from 'vue-tooltip-directive'
+
+Vue.use(VueTooltipDirective)
+```
+3. You should now be able to use the directive in your project on any display component:
+```vue
+<span v-tooltip="'A cool and helpful tooltip!'">
+  Hover me!
+</span>
+```
+4. `vue-tooltip-directive` provides a default Tooltip component for you, but if you want to customize it you can simply create your own and pass it to the plugin as the `component` key in the config object:
+```typescript
 import MyCustomTooltip from '@/components/MyCustomTooltip.vue'
 
 Vue.use(VueTooltipDirective, {
   component: MyCustomTooltip
 })
-```
-4. You should now be able to use the directive in your project on any display component:
-```vue
-<span v-tooltip="'A cool and helpful tooltip!'">
-  Hover me!
-</span>
 ```
 
 ## Configuration

@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid'
 import { CustomDirectiveBinding, DirectiveConfig, PluginConfig, TooltipPosition, VueInstance } from './types'
+import defaultPluginConfig from './utils/defaultConfig'
 
 const instanceCache: { [componentId: string]: VueInstance } = {}
 
@@ -36,7 +37,7 @@ function createTooltip (Vue: any, component: any, el: HTMLElement, binding: Cust
 
 
 export default {
-  install (Vue: any, options: PluginConfig) {
+  install (Vue: any, options: PluginConfig = defaultPluginConfig) {
     const component = options.component
 
     Vue.directive('tooltip', {
