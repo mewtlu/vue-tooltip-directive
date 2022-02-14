@@ -10,8 +10,8 @@
     "url": "https://github.com/mewtlu/vue-tooltip-directive.git"
   },
   "scripts": {
-    "build": "tsc",
-    "compile": "npm run build && cp *.md dist && cp package*.json dist"
+    "build:tsc": "tsc",
+    "build": "npm run build:tsc && cp *.md dist && cp package*.json dist"
   },
   "dependencies": {
     "uuid": "^8.3.2"
