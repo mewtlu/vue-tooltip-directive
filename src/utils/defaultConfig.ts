@@ -5,4 +5,6 @@ const defaultPluginConfig: PluginConfig = {
     component: DefaultTooltip,
 }
 
+export { DefaultTooltip }
+
 export default defaultPluginConfig
