@@ -53,10 +53,14 @@ export default {
           return
         }
         const content = getBindingContent(binding)
-        if (instanceCache[componentId].content === content) {
-          return
+        const config: Partial<DirectiveConfig> = typeof binding.value === 'object' ? binding.value : {}
+        const attachPosition: TooltipPosition | undefined = binding.arg ?? config.position
+        if (instanceCache[componentId].content !== content) {
+          instanceCache[componentId].content = content
         }
-        instanceCache[componentId].content = content
+        if (instanceCache[componentId].position !== attachPosition) {
+          instanceCache[componentId].position = attachPosition
+        }
       },
       unbind (el: HTMLElement) {
         const componentId = el.dataset.tooltipId as string
