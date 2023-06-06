@@ -9,6 +9,12 @@
     "type": "git",
     "url": "https://github.com/mewtlu/vue-tooltip-directive.git"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/",
+      "require": "./dist/cjs/"
+    }
+  },
   "scripts": {
     "tsc": "tsc",
     "build:code": "rollup -c",
