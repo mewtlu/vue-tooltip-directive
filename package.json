@@ -1,6 +1,6 @@
 {
   "name": "vue-tooltip-directive",
-  "version": "1.0.6",
+  "version": "1.0.7-0",
   "description": "A Vue 2 plugin that provides a custom directive allowing the usage of any tooltip component as a directive. ",
   "main": "dist/index.js",
   "author": "Luke Roberts <luke@mewt.eu>",
