@@ -8,7 +8,7 @@ function getBindingContent (binding: CustomDirectiveBinding): string | undefined
   return typeof binding.value === 'object' ? binding.value.content : binding.value
 }
 
-function createTooltip (Vue: any, component: any, el: HTMLElement, binding: CustomDirectiveBinding): VueInstance {
+function createTooltip (Vue: any, TooltipComponent: any, el: HTMLElement, binding: CustomDirectiveBinding): VueInstance {
   const content = getBindingContent(binding)
   const config: Partial<DirectiveConfig> = typeof binding.value === 'object' ? binding.value : {}
   const attachPosition: TooltipPosition | undefined = binding.arg ?? config.position
@@ -18,8 +18,7 @@ function createTooltip (Vue: any, component: any, el: HTMLElement, binding: Cust
     return
   }
 
-  const Tooltip = Vue.extend(component)
-  const instance = new Tooltip({
+  const instance = new TooltipComponent({
     propsData: {
       position: attachPosition,
       ...config,
@@ -39,24 +38,29 @@ function createTooltip (Vue: any, component: any, el: HTMLElement, binding: Cust
 export default {
   install (Vue: any, options: PluginConfig = defaultPluginConfig) {
     const component = options.component
+    const TooltipComponent = Vue.extend(component)
 
     Vue.directive('tooltip', {
       inserted (el: HTMLElement, binding: CustomDirectiveBinding) {
-        createTooltip(Vue, component, el, binding)
+        createTooltip(Vue, TooltipComponent, el, binding)
       },
       componentUpdated (el: HTMLElement, binding: CustomDirectiveBinding) {
         const componentId = el.dataset.tooltipId as string
 
         if (!instanceCache[componentId]) {
           // If el is missing from cache it was probably ignored in the inserted call due to null content, so we'll create it now.
-          createTooltip(Vue, component, el, binding)
+          createTooltip(Vue, TooltipComponent, el, binding)
           return
         }
         const content = getBindingContent(binding)
-        if (instanceCache[componentId].content === content) {
-          return
+        const config: Partial<DirectiveConfig> = typeof binding.value === 'object' ? binding.value : {}
+        const attachPosition: TooltipPosition | undefined = binding.arg ?? config.position
+        if (instanceCache[componentId].content !== content) {
+          instanceCache[componentId].content = content
         }
-        instanceCache[componentId].content = content
+        if (instanceCache[componentId].position !== attachPosition) {
+          instanceCache[componentId].position = attachPosition
+        }
       },
       unbind (el: HTMLElement) {
         const componentId = el.dataset.tooltipId as string
